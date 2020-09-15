@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<head>
+<title>Conversions</title>
+<style type="text/css">@import url(conversions.css);</style>
+<script type="text/javascript">
+let units = [
+    //Name, to_c(), from_c()
+    ["°C", t => t, t => t],
+    ["°F", t => (t-32)/1.8, t => (t*1.8)+32],
+    ["K",  t => t - 273.15, t => t + 273.15],
+];
+</script>
+<script type="text/javascript" src="temperature_conversions.js"></script>
+</head>
+<body>
+<fieldset>
+<legend>Temperature</legend>
+</fieldset>
+</body>
+</html>

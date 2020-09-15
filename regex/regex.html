@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<head>
+<title>Regular Expression Search & Replace</title>
+<style type="text/css">@import url(regex.css);</style>
+<script type="text/javascript" src="regex.js"></script>
+</head>
+<body>
+<h1>Regular Expression Search and Replace</h1>
+<textarea class="check"></textarea>
+<div>
+<fieldset>
+    <label for="replace" class="replace">Replace </label>
+    <input name="replace" class="check"></input>
+    <label for="with" class="with"> with </label>
+    <input name="with" class="check"></input>
+    <label for="i">i</label><input type="checkbox" value="i" class="check"/>
+    <label for="g">g</label><input type="checkbox" value="g" checked="checked" class="check"/>
+    <label for="m">m</label><input type="checkbox" value="m" checked="checked" class="check"/>
+    <button class="sort check" onclick="toggle_sort(this);">Sort</button>
+    <button class="add" onclick="add_fieldset(this);">+</button>
+    <button class="remove" onclick="remove_fieldset(this);">-</button>
+</fieldset>
+</div>
+<textarea></textarea>
+</body>
+</html>

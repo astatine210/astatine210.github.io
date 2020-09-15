@@ -1,0 +1,63 @@
+* {
+    font-family: consolas, "lucida console", monospace;
+    font-size: medium;
+}
+
+html {
+    background-image: radial-gradient(circle at top left, ivory 10%, white);
+}
+
+h1 {
+    font-size: x-large;
+}
+
+textarea {
+    border: 1px black solid;
+
+    width: 60em;
+    height: 10em;
+    padding: 0px;
+}
+
+fieldset {
+    border: 1px black solid;
+    border-radius: 1ex;
+    background-image: radial-gradient(circle at bottom right, ivory 50%, white);
+
+    width: 60em;
+    padding: 0px;
+    margin: 0ex;
+    margin-bottom: .5em;
+    margin-top: .5em;
+}
+
+label, input {
+    margin: 1ex;
+    vertical-align: middle;
+}
+
+input.error {
+    color: red;
+    font-weight: bold;
+}
+
+button {
+    border: 1px black solid;
+    border-radius: 1ex;
+    background-color: white;
+    vertical-align: middle;
+}
+
+button[value="1"] {
+    color: white;
+    background-color: black;
+}
+
+button:disabled {
+    color: silver;
+    border-color: silver;
+}
+
+button:active {
+    border: 1px #999 solid;
+}

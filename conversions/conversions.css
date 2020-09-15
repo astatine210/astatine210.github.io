@@ -1,0 +1,55 @@
+* {
+   font-family: "consolas", "lucida console", monospace;
+}
+
+fieldset {
+    width: 15em;
+    padding: 0px;
+}
+
+label {
+    display: block;
+    float: left;
+    width: 12ex;
+    padding-left: 1ex;
+}
+
+span {
+    padding-left: 1ex;
+}
+
+div {
+    margin-bottom: 2px;
+}
+
+legend, input, button, fieldset {
+    background-color: white;
+    border: 1px silver solid;
+    border-radius: .5ex;
+}
+
+legend {
+    margin-left: 1ex;
+    margin-bottom: 1ex;
+}
+
+button {
+    margin: 1ex;
+}
+
+input {
+    width: 20ex;
+}
+
+iframe {
+    float: left;
+    width: 20ex;
+    height: 11.5em;
+    border: none;
+}
+
+hr {
+    border: none;
+    background-color: silver;
+    height: 1px;
+}
