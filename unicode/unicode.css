@@ -1,0 +1,45 @@
+* {
+    transition: all 1s;
+}
+
+html {
+    font-family: consolas, monospace;
+}
+
+div.character {
+    border: 1px black solid;
+    border-radius: 10px;
+    width: 180px;
+    height: 180px;
+    padding: 3px;
+    margin: 3px;
+    float: left;
+}
+
+div.character h1 {
+    font-size: 50pt;
+    font-weight: normal;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+div.character p {
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 3px;
+    text-align: center;
+}
+
+div.clicked {
+    background-color: green;
+    transition: all 0s;
+}
+
+input {
+    font-size: large;
+    border-radius: 4px;
+    padding: 1px;
+    margin-bottom: 4px;
+    border-style: solid;
+}
