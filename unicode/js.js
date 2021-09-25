@@ -1,4 +1,5 @@
 var search, output;
+var data = [];
 var delay = 250; //Update time in milliseconds
 /**
  * Onload event. Set up variables, start the periodical update
@@ -6,6 +7,19 @@ var delay = 250; //Update time in milliseconds
 window.onload = () => {
     search = document.getElementsByTagName('input')[0];
     output = document.getElementsByTagName('div')[0];
+
+    raw_data = raw_data.split(/\n/);
+    let codepoint = 0;
+    for(let line of raw_data) {
+        if(line.startsWith('0')) {
+            codepoint = parseInt(line.substring(1), 16);
+        } else if (codepoint) {
+            data.push([line, String.fromCodePoint(codepoint), "&#x"+codepoint.toString(16)+";", codepoint]);
+            codepoint += 1;
+        }
+    }
+
+    console.log(data);
 
     search.last_value = '';
     search.focus();
