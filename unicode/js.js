@@ -1,6 +1,8 @@
 var search, output;
 var data = [];
 var delay = 250; //Update time in milliseconds
+var replacement_string = "!@#$%^&*()_:;<=>?~{}/|"
+
 /**
  * Onload event. Set up variables, start the periodical update
  */
@@ -10,21 +12,31 @@ window.onload = () => {
 
     raw_data = raw_data.split(/\n/);
     let codepoint = 0;
+    replacements = [];
     for(let line of raw_data) {
         if(line.startsWith('0')) {
+            replacements = line.split(/ /);
+            codepoint = replacements.shift();
             codepoint = parseInt(line.substring(1), 16);
         } else if (codepoint) {
-            data.push([line, String.fromCodePoint(codepoint), "&#x"+codepoint.toString(16)+";", codepoint]);
+            let character = String.fromCodePoint(codepoint);
+            line = decode(line, replacements);
+            let entity = "&#x"+codepoint.toString(16)+";"
+            data.push([line, character, entity, codepoint]);
             codepoint += 1;
         }
     }
-
-    console.log(data);
-
     search.last_value = '';
     search.focus();
 
     window.setInterval(check_for_update, delay);
+}
+
+function decode(name, replacements) {
+    for(let i in replacements) {
+        name = name.replaceAll(replacement_string[i], replacements[i]);
+    }
+    return name;
 }
 
 /**
