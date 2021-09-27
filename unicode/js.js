@@ -1,7 +1,7 @@
 var search, output;
 var data = [];
 var delay = 250; //Update time in milliseconds
-var replacement_string = "!@#$%^&*()_:;<=>?~{}/|"
+var replacement_string = "'!#$%&()*+,.:;<=>?@[]^_abcdefghijklmnopqrstuvwxyz{|}~"
 
 /**
  * Onload event. Set up variables, start the periodical update
@@ -32,6 +32,12 @@ window.onload = () => {
     window.setInterval(check_for_update, delay);
 }
 
+/**
+ * Does the replacements to unpack the naive compression in unicode.js
+ * @param {String} name 
+ * @param {Array} replacements 
+ * @returns name with the characters in replacement_string replaced by the strings in replacements
+ */
 function decode(name, replacements) {
     for(let i in replacements) {
         name = name.replaceAll(replacement_string[i], replacements[i]);
@@ -52,9 +58,11 @@ function check_for_update() {
  * Updates the output
  */
 function update() {
+    //Clear the output
     while(output.firstChild) {
         output.removeChild(output.firstChild);
     }
+    //Case-insensitive search
     search_term = search.value.toUpperCase();
     if(search_term.length>2) {
         for(let line of data) {
