@@ -4,7 +4,7 @@ that the unicodedata module knows of."""
 import unicodedata
 from collections import Counter
 
-# ASCII Characters that never appear in unicode names and won't disrupt a javascript string
+# ASCII Characters that never appear in unicode names and won't disrupt a javascript string in double quotes
 replacement_string = "'!#$%&()*+,.:;<=>?@[]^_abcdefghijklmnopqrstuvwxyz{|}~"
 
 # Flag whether the last codepoint has a name
@@ -45,7 +45,7 @@ for block_start, names in data.items():
         word: freq * (len(word)-1) for (word, freq) in words.items() if freq > 1 and len(word) > 1
     }
     # Sort words by descending space taken up
-    words = [word[0] for word in sorted(words.items(), key = lambda i:i[1], reverse=True)]
+    words = [word[0] for word in sorted(words.items(), key = lambda i:i[1], reverse=True)][:len(replacement_string)]
     # Create line at start of this block with the hex of the starting codepoint and
     #  the words we're replacing
     first_line = block_start + " " + " ".join(words)
