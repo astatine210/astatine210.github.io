@@ -33,7 +33,7 @@ window.onload = () => {
 }
 
 /**
- * Does the replacements to unpack the naive compression in unicode.js
+ * Unpacks the naive compression in unicode.js
  * @param {String} name 
  * @param {Array} replacements 
  * @returns name with the characters in replacement_string replaced by the strings in replacements
@@ -54,6 +54,7 @@ function check_for_update() {
         update();
     }
 }
+
 /**
  * Updates the output
  */
@@ -63,16 +64,18 @@ function update() {
         output.removeChild(output.firstChild);
     }
     //Case-insensitive search
-    search_term = search.value.toUpperCase();
+    let search_term = search.value.toUpperCase();
     if(search_term.length>2) {
         for(let line of data) {
             if(line[0].indexOf(search_term) !=- 1) {
-                let div = output.appendChild(char_div(line));
+                let div = char_div(line);
                 div.onclick = copy;
+                output.appendChild(div);
             }
         }
     }
 }
+
 /**
  * @param {String[]} line An array: [NAME, CHARACTER, HEX, DECIMAL]
  * @returns {Element} A a DOM XML <div> element containing a unicode character and its description
@@ -89,13 +92,14 @@ function char_div(line) {
 /**
  * @param {String} name Tag name
  * @param {String} text Text contents of tag
- * @returns {Element} a DOM XML element equivalent to &lt;name&gt;text&lt;/name&gt;
+ * @returns {Element} a DOM XML element equivalent to <name>text</name>
  */
 function text_el(name, text) {
     let el = document.createElement(name);
     el.appendChild(document.createTextNode(text))
     return el;
 }
+
 /**
  * Copy this div's character to the clipboard buffer
  */

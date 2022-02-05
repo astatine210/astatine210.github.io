@@ -4,7 +4,8 @@ that the unicodedata module knows of."""
 import unicodedata
 from collections import Counter
 
-# ASCII Characters that never appear in unicode names and won't disrupt a javascript string in double quotes
+# ASCII Characters that never appear in unicode names and won't
+#  disrupt a javascript string in double quotes
 replacement_string = "'!#$%&()*+,.:;<=>?@[]^_abcdefghijklmnopqrstuvwxyz{|}~"
 
 # Flag whether the last codepoint has a name
@@ -42,10 +43,14 @@ for block_start, names in data.items():
     # Filter out short words and words that only appear once, and multiply the
     #  frequency by the length of the word (minus 1) to get the space that will be saved
     words = {
-        word: freq * (len(word)-1) for (word, freq) in words.items() if freq > 1 and len(word) > 1
+        word: freq * (len(word) - 1)
+        for (word, freq) in words.items()
+        if freq > 1 and len(word) > 1
     }
     # Sort words by descending space taken up
-    words = [word[0] for word in sorted(words.items(), key = lambda i:i[1], reverse=True)][:len(replacement_string)]
+    words = [
+        word[0] for word in sorted(words.items(), key=lambda i: i[1], reverse=True)
+    ][: len(replacement_string)]
     # Create line at start of this block with the hex of the starting codepoint and
     #  the words we're replacing
     first_line = block_start + " " + " ".join(words)
@@ -57,6 +62,6 @@ for block_start, names in data.items():
     names.insert(0, first_line)
 
 with open("unicode.js", "w", encoding="ASCII", newline="\n") as fh:
-    fh.write(f"var raw_data=`")
+    fh.write("var raw_data=`")
     fh.write("\n".join("\n".join(names) for names in data.values()))
     fh.write("`;")

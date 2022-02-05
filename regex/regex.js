@@ -74,9 +74,11 @@ function update() {
                 text = text.replace(
                     new RegExp(regex, (i?"i":'') + (g?"g":'') + (m?"m":'')),
                     replacement
-                        .replace(/\\r/g, '\r')
-                        .replace(/\\n/g, '\n')
-                        .replace(/\\t/g, '\t')
+                        .split(/\\\\/).map( s => s
+                            .replace(/\\r/g, '\r')
+                            .replace(/\\n/g, '\n')
+                            .replace(/\\t/g, '\t')
+                        ).join('\\')
                 );
             } catch {
                 //Regex is malformed. Highlight the regex and don't replace anything.

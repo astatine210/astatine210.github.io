@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<head>
+<title>Discord Timestamp Generator</title>
+<style type="text/css">
+html {
+    font-family: monospace;
+}
+fieldset {
+    width: 25em;
+    margin-top: 1ex;
+}
+legend, fieldset {
+    border: 2px silver solid;
+    border-radius: 1ex;
+    padding: 1ex;
+}
+legend, button {
+    padding: 0ex;
+}
+span {
+    margin-left: 1em;
+}
+</style>
+<script type="text/JavaScript">
+var input, output;
+
+window.onload = () => {
+    input = document.getElementById('input');
+    input.last_value = "";
+    output = document.getElementById('output');
+    let now = new Date();
+    now = new Date(now.getTime()-(now.getTimezoneOffset()*60000));
+    input.value = now = now.toISOString().replace('T',' ').replace(/:[^:]*Z/,'');
+    window.setInterval(check_update, 250);
+}
+
+function check_update() {
+    if(input.last_value != input.value) {
+        input.last_value = input.value;
+        let d = Date.parse(input.value.trim());
+        let text = "Invalid date";
+        if(d) {
+            let unix_time = Math.floor(d/1000);
+            text = `<t:${unix_time}:F> (<t:${unix_time}:R>)`;
+        }
+        while(output.firstChild) {
+            output.removeChild(output.firstChild);
+        }
+        output.appendChild(document.createTextNode(text));
+    }
+}
+
+function copy() {
+    if(output.firstChild) {
+        navigator.clipboard.writeText(output.firstChild.textContent);
+    }
+}
+</script>
+</head>
+<body>
+<h1>Discord Timestamp Generator</h1>
+<fieldset>
+    <legend>Enter Time Here</legend>
+    <input id="input"/>
+</fieldset>
+<fieldset><legend>Copy Timestamp From Here</legend><button title="Copy to clipboard" onclick="copy();">&#x1f4cb;</button><span id="output"></span></fieldset>
+</body>
+</html>
