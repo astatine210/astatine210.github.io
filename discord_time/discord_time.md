@@ -8,7 +8,7 @@ A quick'n'dirty generator for timezone-agnostic timestamps in Discord with no di
 
 * Only outputs one kind of timestamp - a full date with the weekday, followed by relative time in parentheses.
 
-* The date you enter is limited by the capabilities of JavaScript's `[Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)` function.
+* The date you enter is limited by the capabilities of JavaScript's [`Date.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) function.
 
 * Doesn't advertise anything.
 
