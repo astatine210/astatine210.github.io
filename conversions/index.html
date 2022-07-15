@@ -2,12 +2,20 @@
 <html lang="en">
 <meta charset="UTF-8"/>
 <head>
-<title>Conversions</title>
+<title>Unit Conversions</title>
 <style type="text/css">@import url(conversions.css);</style>
 <script type="text/javascript" src="data.js"></script>
 <script type="text/javascript" src="conversions.js"></script>
 <body>
-<h1>Conversions</h1>
-<fieldset><legend>Precision</legend><input id="precision" type="range" min="1" max="6"/></fieldset>
+<h1>Unit Conversions</h1>
+<fieldset class="precision"><legend>Precision</legend><input id="precision" type="range" min="1" max="6" list="p"/>
+<datalist id="p">
+<option value="1" label="1"></option>
+<option value="2" label="2"></option>
+<option value="3" label="3"></option>
+<option value="4" label="4"></option>
+<option value="5" label="5"></option>
+<option value="6" label="6"></option>
+</datalist></fieldset>
 </body>
 </html>
