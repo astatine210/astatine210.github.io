@@ -8,8 +8,8 @@ h1 {
     padding: 0px;
 }
 
-table {
-    border-collapse: collapse;
+html, fieldset {
+    background: radial-gradient(circle at top left, ivory 70%, skyblue 200%);
 }
 
 fieldset {
@@ -19,15 +19,18 @@ fieldset {
     margin-right: 1em;
     border-radius: 0.5ex;
     border: 1px silver solid;
+    transition: all 10s;
 }
 
-html, fieldset {
-    background: radial-gradient(circle at top left, ivory 70%, skyblue 200%);
+@media (min-width: 30em) {
+    fieldset:not(:first-of-type) {
+        float: left;
+        height: 22em;
+    }
 }
 
-fieldset:not(:first-of-type) {
-    float: left;
-    height: 22em;
+table {
+    border-collapse: collapse;
 }
 
 td:nth-child(1) {
@@ -49,4 +52,5 @@ hr {
 .last_updated {
     color: navy;
     font-weight: bold;
+    border: 1px grey solid;
 }
