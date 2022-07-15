@@ -16,7 +16,7 @@ Most people who need to convert units betwen metric and non-metric systems quick
 
 ## How do I use it?
 
-Enter a number next to a unit. To see the unit converted to all other units, press enter, or tab to another input field, 
+Enter a number next to a unit. To see the unit converted to all other units, press enter, or tab to another input field,
 
 The + and - buttons under the list of units will increase or decrease the decimal point precision of the result.
 

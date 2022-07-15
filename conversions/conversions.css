@@ -1,55 +1,52 @@
 * {
-   font-family: "consolas", "lucida console", monospace;
+    font-family: "corbel", "arial", "helvetica", sans-serif;
+}
+
+h1 {
+    font-size: x-large;
+    margin: 0px;
+    padding: 0px;
+}
+
+table {
+    border-collapse: collapse;
 }
 
 fieldset {
     width: 15em;
-    padding: 0px;
-}
-
-label {
-    display: block;
-    float: left;
-    width: 12ex;
-    padding-left: 1ex;
-}
-
-span {
-    padding-left: 1ex;
-}
-
-div {
-    margin-bottom: 2px;
-}
-
-legend, input, button, fieldset {
-    background-color: white;
+    padding: .5em;
+    margin: 0px;
+    margin-right: 1em;
+    border-radius: 0.5ex;
     border: 1px silver solid;
-    border-radius: .5ex;
 }
 
-legend {
-    margin-left: 1ex;
-    margin-bottom: 1ex;
+html, fieldset {
+    background: radial-gradient(circle at top left, ivory 70%, skyblue 200%);
 }
 
-button {
-    margin: 1ex;
+fieldset:not(:first-of-type) {
+    float: left;
+    height: 22em;
+}
+
+td:nth-child(1) {
+    width: 5em;
 }
 
 input {
-    width: 20ex;
-}
-
-iframe {
-    float: left;
-    width: 20ex;
-    height: 11.5em;
-    border: none;
+    font-family: "consolas", "lucida console", monospace;
+    border-radius: 0.5ex;
+    border: 1px silver solid;
 }
 
 hr {
+    height: 0;
     border: none;
-    background-color: silver;
-    height: 1px;
+    border-top: 1px silver solid;
+}
+
+.last_updated {
+    color: navy;
+    font-weight: bold;
 }
