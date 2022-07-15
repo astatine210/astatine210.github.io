@@ -19,13 +19,18 @@ fieldset {
     margin-right: 1em;
     border-radius: 0.5ex;
     border: 1px silver solid;
-    transition: all 10s;
 }
 
-@media (min-width: 30em) {
+@media (min-width: 60em) {
     fieldset:not(:first-of-type) {
         float: left;
         height: 22em;
+    }
+}
+
+@media (orientation: portrait) {
+    * {
+        font-size: xx-large;
     }
 }
 
