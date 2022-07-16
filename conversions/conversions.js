@@ -60,6 +60,9 @@ function conversion_fieldset(name, data) {
             // onchange event for input field
             i.factor = factor;
             i.onchange = function() {
+                // Strip out spaces. Mobile/tablet keyboards tend to add a space
+                //  after the '.' when typing decimals without a leading zero.
+                this.value = this.value.replace(/\. +/g, ".");
                 for(let input of fs.inputs) {
                     // Update all other input fields in this fieldset
                     if(input != this) {
