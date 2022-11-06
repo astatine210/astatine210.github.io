@@ -128,9 +128,10 @@ function temperature_fieldset(data) {
 }
 
 /**
+ * Create and return a new XML element of a given name.
  * @param {String} name Element name
- * @param {Array|String|Element} child Appends child, or children.
- * @param {Object} attrs Creates node attributes from key:pair values
+ * @param {Array|String|Element} child Child, or children, to append on creation.
+ * @param {Object} attrs Creates node attributes from {key:value} pairs in an object
  * @returns {Element} Element
  */
 function new_el(name, child, attrs) {
@@ -156,7 +157,7 @@ function new_el(name, child, attrs) {
  * @returns String to title case
  */
 String.prototype.toTitleCase = function () {
-    return this.replace(/\w\S*/g, s=>s[0].toUpperCase() + s.substr(1));
+    return this.replace(/\w\S*/g, s=>s[0].toUpperCase() + s.slice(1));
 }
 
 /**
