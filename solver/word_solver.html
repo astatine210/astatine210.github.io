@@ -6,12 +6,12 @@
 <meta property="og:title" content="Word game solver"/>
 <meta property="og:description" content="A small, self-contained web page for solving a particular type of daily five-letter word game."/>
 <style type="text/css">
-html {
+* {
     font-family: "cascadia mono", "consolas", "lucida console", monospace;
+    font-size: 30pt;
 }
 
 h1 {
-    font-size: large;
     margin: 0px;
 }
 
@@ -19,6 +19,7 @@ input {
     width: 10em;
     margin: 1px;
     border: 1px solid;
+    padding: .25ex;
 }
 
 p {
@@ -26,7 +27,7 @@ p {
 }
 
 fieldset {
-    width: 10em;
+    width: 11em;
     border: 1px solid;
 }
 
@@ -50,6 +51,7 @@ fieldset {
 #green input {
     float: left;
     width: 1em;
+    text-align: center;
 }
 
 #green input:not(:invalid) {
@@ -57,7 +59,7 @@ fieldset {
 }
 
 div#output {
-    width: 30em;
+    width: 20em;
     word-wrap: break-word;
 }
 </style>
@@ -74,7 +76,7 @@ window.onload = () => {
     
     inputs.map((el)=>{
         el.last_value="";
-        el.setAttribute('required','required')
+        el.setAttribute('required','required');
     });
 
     wordlist = document.getElementsByTagName('p')[0].textContent.match(/\w{5}/g);
@@ -106,7 +108,7 @@ function update() {
         alphabet = alphabet.replace(letter, "");
     }
 
-    // Split into 5 regexes, one for each letter position.
+    // Create an array of 5 regexes, one for each letter position.
     //  If there's a green letter, make it a regex that matches one letter.
     //  If not, keep the alphabet with the grey letters stripped out.
     let positions = green.map(
