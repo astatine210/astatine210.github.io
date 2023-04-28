@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+    viewBox="-50 -50 100 100">
+<style type="text/css">@import url(clock.css);</style>
+<title>Clock</title>
+<script type="text/javascript" href="clock.js"/>
+<!-- Outline -->
+<g id="face">
+    <g id="markers">
+        <!-- Hour marker -->
+        <rect x="-.5" y="-48" width="1" height="3.5"/>
+        <!-- Minute marker -->
+        <rect x="-0.5" y="-48" width="1" height="2"/>
+    </g>
+    <g id="numerals">
+        <text x="0" y="-38"/>
+    </g>
+    <circle cx="0" cy="0" r="48"/>
+</g>
+<g id="hands">
+    <!-- Hour hand -->
+    <g id="h">
+        <path d="M 0 2.5 L -3 0 L 0 -30 L 2.5 0 Z"/>
+    </g>
+    <!-- Minute hand -->
+    <g id="m">
+        <path d="M 0 3 L -2 0 L 0 -40 L 2 0 Z"/>
+    </g>
+    <!-- Second hand -->
+    <g id="s">
+        <path d="M 0 -47 L 1 5 L -1 5 Z"/>
+        <circle r="1.5"/>
+    </g>
+</g>
+</svg>

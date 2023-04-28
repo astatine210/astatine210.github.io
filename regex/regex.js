@@ -6,7 +6,7 @@ var in_text, out_text;
 var fieldsets;
 /** Array of form items that will be periodically checked for changes. */
 var inputs_to_check;
-/** @arg {Object} Copy of the regex fieldset, stored in memory so it can be inserted. */
+/** Copy of the regex fieldset, stored in memory so it can be inserted. */
 var blank_fieldset;
 
 window.onload = ()=> {
@@ -50,6 +50,15 @@ function check_for_update() {
     }
 }
 
+/** Unescape the tab and newline characters in a string */
+var unescape_map = new Map([['\\n', '\n'],['\\t', '\t'],['\\r', '\r']]);
+String.prototype.unescape = function() {
+    return this.replace(
+        /(\\[trn])/,
+        s => unescape_map.has(s)?unescape_map.get(s):s
+    );
+}
+
 /**
  * Run each regex in sequence on the contents of the first textarea,
  *  and put the result in the second textarea.
@@ -57,11 +66,11 @@ function check_for_update() {
 function update() {
     let text = in_text.value;
 
-    //Iterate over each regex
+    // Iterate over each regex
     for(let f of fieldsets) {
         let fieldset_inputs = [...f.getElementsByTagName('input')]
 
-        //Get the inputs' values
+        // Get the inputs' values
         let [regex, replacement, i, g, m] =
             fieldset_inputs.map(
                 (el) => (el.type=='checkbox')?el.checked:el.value
@@ -70,23 +79,18 @@ function update() {
         fieldset_inputs[0].classList.remove('error');
 
         if(regex != '') {
-            try { //This block will throw an exception if passed a malformed regex
+            try { // This block will throw an exception if passed a malformed regex
                 text = text.replace(
                     new RegExp(regex, (i?"i":'') + (g?"g":'') + (m?"m":'')),
-                    replacement
-                        .split(/\\\\/).map( s => s
-                            .replace(/\\r/g, '\r')
-                            .replace(/\\n/g, '\n')
-                            .replace(/\\t/g, '\t')
-                        ).join('\\')
+                    replacement.unescape()
                 );
             } catch {
-                //Regex is malformed. Highlight the regex and don't replace anything.
+                // Regex is malformed. Highlight the regex and don't replace anything.
                 fieldset_inputs[0].classList.add('error');
             }
         }
 
-        //Sort button is on, so sort all the lines alphabetically.
+        // Sort button is on, so sort all the lines alphabetically.
         if(f.getElementsByClassName('sort')[0].value=="1") {
             text = sort_lines(text);
         }

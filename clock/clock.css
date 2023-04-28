@@ -1,0 +1,33 @@
+#face circle {
+    stroke-width: .75px;
+    stroke: black;
+    fill: transparent;
+}
+
+#markers * {
+    stroke: none;
+    fill: grey;
+}
+
+#h *, #m *, #s * {
+    stroke: none;
+    fill: black;
+}
+
+#s * {
+    fill: red;
+}
+
+#numerals text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 8px;
+    text-anchor: middle;
+    font-weight: bold;
+    dominant-baseline: middle;
+}
+
+.tick {
+    transition-property: transform;
+    transition-duration: .15s;
+    transition-timing-function: linear(.1, .5, 1.2, 1);
+}
